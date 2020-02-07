@@ -1,9 +1,9 @@
 //
 //  UITableViewExtensions.swift
-//  BaseProject_MVC
+//  GSSqliteGlobal
 //
-//  Created by Gati Shah on 02/08/19.
-//  Copyright © 2019 Gati Shah. All rights reserved.
+//  Created by iGatiTech on 02/08/19.
+//  Copyright © 2020 iGatiTech. All rights reserved.
 //
 
 import Foundation
@@ -21,6 +21,11 @@ extension UITableView {
         self.preservesSuperviewLayoutMargins = false
         self.separatorInset = UIEdgeInsets.zero
         self.layoutMargins = UIEdgeInsets.zero
+    }
+    
+    func setDynamicCellHeight() {
+        self.rowHeight = UITableView.automaticDimension
+        self.estimatedRowHeight = 44.0
     }
 
     func nextResponder(index: Int){
