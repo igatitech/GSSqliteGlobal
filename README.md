@@ -17,9 +17,10 @@ Many times we need a local database for our application. And if we talk about iO
 ![alt text](https://github.com/igatitech/GSSqliteGlobal/blob/master/Resources/Sqlite.png)
 
 - Added library
+
 ![alt text](https://github.com/igatitech/GSSqliteGlobal/blob/master/Resources/LinkBinary.png)
 
-- Add Local Database folder into your project
+- Add **Local Database** folder into your project
 - This folder contains Constant header file, Bridging Header file, sqlite file, Database Facility Manager Class
 - Rename all the files as per your requirement.
 - As you have added Bridging Header file, you need to add it's path in Build Settings(If Bridging Header file is already setup in your project then ignore futhre steps)
@@ -32,47 +33,47 @@ Many times we need a local database for our application. And if we talk about iO
     
     ![alt text](https://github.com/igatitech/GSSqliteGlobal/blob/master/Resources/BridgingHeaderPath.png)
     
-    - @note : It is important to begin your directory path with "$(SRCROOT), so in future if you move your project to some other machine or directory, it will automatically update the path"
+    - **@note:** It is important to begin your directory path with "$(SRCROOT), so in future if you move your project to some other machine or directory, it will automatically update the path"
 
 ### AppDelegate.swift
 
 ```swift
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        copyDatabaseIfNeeded()
-        return true
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    copyDatabaseIfNeeded()
+    return true
+}
+
+//MARK: - Database Methods
+
+func copyDatabaseIfNeeded() {
+    // Move database file from bundle to documents folder
+    
+    let fileManager = FileManager.default
+    
+    let documentsUrl = fileManager.urls(for: .documentDirectory,
+                                        in: .userDomainMask)
+    guard documentsUrl.count != 0 else {
+        return // Could not find documents URL
     }
-    
-    //MARK: - Database Methods
-    
-    func copyDatabaseIfNeeded() {
-        // Move database file from bundle to documents folder
-        
-        let fileManager = FileManager.default
-        
-        let documentsUrl = fileManager.urls(for: .documentDirectory,
-                                            in: .userDomainMask)
-        guard documentsUrl.count != 0 else {
-            return // Could not find documents URL
+    let finalDatabaseURL = documentsUrl.first!.appendingPathComponent("DB.sqlite")
+    if !( (try? finalDatabaseURL.checkResourceIsReachable()) ?? false) {
+        print("DB does not exist in documents folder")
+        let documentsURL = Bundle.main.resourceURL?.appendingPathComponent("DB.sqlite")
+        do {
+            try fileManager.copyItem(atPath: (documentsURL?.path)!, toPath: finalDatabaseURL.path)
+        } catch let error as NSError {
+            print("Couldn't copy file to final location! Error:\(error.description)")
         }
-        let finalDatabaseURL = documentsUrl.first!.appendingPathComponent("DB.sqlite")
-        if !( (try? finalDatabaseURL.checkResourceIsReachable()) ?? false) {
-            print("DB does not exist in documents folder")
-            let documentsURL = Bundle.main.resourceURL?.appendingPathComponent("DB.sqlite")
-            do {
-                try fileManager.copyItem(atPath: (documentsURL?.path)!, toPath: finalDatabaseURL.path)
-            } catch let error as NSError {
-                print("Couldn't copy file to final location! Error:\(error.description)")
-            }
-        } else {
-            print("Database file found at path: \(finalDatabaseURL.path)")
-        }
+    } else {
+        print("Database file found at path: \(finalDatabaseURL.path)")
     }
-    
-    func getDBPath() -> String? {
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let documentsDir = paths[0]
-        return URL(fileURLWithPath: documentsDir).appendingPathComponent(APPLICATION_DB).absoluteString
-    }
+}
+
+func getDBPath() -> String? {
+    let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+    let documentsDir = paths[0]
+    return URL(fileURLWithPath: documentsDir).appendingPathComponent(APPLICATION_DB).absoluteString
+}
 ```
 
 ### Basic Queries :
@@ -81,56 +82,56 @@ Many times we need a local database for our application. And if we talk about iO
 ```swift
 func insertIntoTable() {
         
-        let dbFacilities = DBFacilities()
-        var resultInsert = false
-        resultInsert = dbFacilities.ExecuteQuery("INSERT INTO user (firstname, lastname, email) VALUES (\"\(self.textFieldFirstName.text ?? "")\", \"\(self.textFeildLastName.text ?? "")\", \"\(self.textFieldEmail.text ?? "")\")")
-        print(resultInsert)
-        if resultInsert {
-            print("Data inserted successfully in user table")
-        } else {
-            print("Data not inserted in user table")
-        }
+    let dbFacilities = DBFacilities()
+    var resultInsert = false
+    resultInsert = dbFacilities.ExecuteQuery("INSERT INTO user (firstname, lastname, email) VALUES (\"\(self.textFieldFirstName.text ?? "")\", \"\(self.textFeildLastName.text ?? "")\", \"\(self.textFieldEmail.text ?? "")\")")
+    print(resultInsert)
+    if resultInsert {
+        print("Data inserted successfully in user table")
+    } else {
+        print("Data not inserted in user table")
     }
+}
 ```
 
 > Update into Table
 ```swift
 func updateIntoTable() {
         
-        let dbFacilities = DBFacilities()
-        var resultUpdate = false
-        resultUpdate = dbFacilities.ExecuteQuery("UPDATE user SET firstname = \"\(self.textFieldFirstName.text ?? "")\", lastname = \"\(self.textFeildLastName.text ?? "")\" where email = \"\(self.textFieldEmail.text ?? "")\"")
-        if resultUpdate {
-            print("Data updated successfully in user table")
-        } else {
-            print("Data not updated in user table")
-        }
+    let dbFacilities = DBFacilities()
+    var resultUpdate = false
+    resultUpdate = dbFacilities.ExecuteQuery("UPDATE user SET firstname = \"\(self.textFieldFirstName.text ?? "")\", lastname = \"\(self.textFeildLastName.text ?? "")\" where email = \"\(self.textFieldEmail.text ?? "")\"")
+    if resultUpdate {
+        print("Data updated successfully in user table")
+    } else {
+        print("Data not updated in user table")
     }
+}
 ```
 
 > Delete from Table
 ```swift
 func deleteFromTable() {
         
-        let dbFacilities = DBFacilities()
-        var resultDelete = false
-        resultDelete = dbFacilities.ExecuteQuery("delete from user where email = \"\(email)\"")
-        if resultDelete {
-            print("Record deleted successfully")
-        } else {
-            print("Record not deleted!")
-        }
+    let dbFacilities = DBFacilities()
+    var resultDelete = false
+    resultDelete = dbFacilities.ExecuteQuery("delete from user where email = \"\(email)\"")
+    if resultDelete {
+        print("Record deleted successfully")
+    } else {
+        print("Record not deleted!")
     }
+}
 ```
 
 > Select All Data from Table
 ```swift
 func selectAllDataFromTable() {
         
-        let dbFacilities = DBFacilities()
-        let arrUserData = dbFacilities.SelectQuery("select * from user")
-        print(arrUserData)
-    }
+    let dbFacilities = DBFacilities()
+    let arrUserData = dbFacilities.SelectQuery("select * from user")
+    print(arrUserData)
+}
 ```
 
 ## License
