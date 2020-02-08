@@ -6,7 +6,7 @@ Many times we need a local database for our application. And if we talk about iO
 
 ![alt text](https://github.com/igatitech/GSSqliteGlobal/blob/master/Resources/AddUser.png)           ![alt text](https://github.com/igatitech/GSSqliteGlobal/blob/master/Resources/UserList.png)
 
-![](https://github.com/igatitech/GSSqliteGlobal/blob/master/Resources/GSSqliteGlobalSmall.gif)
+![](https://github.com/igatitech/GSSqliteGlobal/blob/master/Resources/GSSqliteGlobal.gif)
 
 ### Usage
 
