@@ -57,7 +57,7 @@
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Firstname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zdy-qD-Dhp">
                                                                 <rect key="frame" x="0.0" y="0.0" width="139" height="40"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="ySS-0O-jvz" id="fqq-Vm-BX1"/>
                                                                 </connections>
@@ -65,7 +65,7 @@
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lastname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HDk-ve-ncC">
                                                                 <rect key="frame" x="149" y="0.0" width="139" height="40"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="ySS-0O-jvz" id="oh8-jo-eIt"/>
                                                                 </connections>
@@ -78,7 +78,7 @@
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bUw-Uf-fqG">
                                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="40"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="done"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="ySS-0O-jvz" id="UPk-Gr-CUy"/>
                                                                 </connections>
@@ -183,9 +183,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="Aee-Gy-qhI"/>
                     <connections>
-                        <outlet property="textFeildLastName" destination="HDk-ve-ncC" id="jWy-8h-os5"/>
                         <outlet property="textFieldEmail" destination="bUw-Uf-fqG" id="NYK-Mx-fhF"/>
                         <outlet property="textFieldFirstName" destination="Zdy-qD-Dhp" id="6kP-Ru-pSN"/>
+                        <outlet property="textFieldLastName" destination="HDk-ve-ncC" id="IFE-nD-WQ3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UBx-JU-XNc" sceneMemberID="firstResponder"/>

@@ -32,6 +32,7 @@
 		596EA3DE23EDD7F200ACA58D /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596EA3DD23EDD7F200ACA58D /* UserData.swift */; };
 		596EA3E023EDE2C300ACA58D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596EA3DF23EDE2C300ACA58D /* UIViewControllerExtension.swift */; };
 		596EA3E123EDF60500ACA58D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 596EA3D723EDB78200ACA58D /* libsqlite3.tbd */; };
+		596EA3E323EE66A900ACA58D /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596EA3E223EE66A900ACA58D /* UITextFieldExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		596EA3DB23EDD03200ACA58D /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		596EA3DD23EDD7F200ACA58D /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		596EA3DF23EDE2C300ACA58D /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		596EA3E223EE66A900ACA58D /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 		596EA37123EC9ACE00ACA58D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				596EA3E223EE66A900ACA58D /* UITextFieldExtension.swift */,
 				596EA3DF23EDE2C300ACA58D /* UIViewControllerExtension.swift */,
 				596EA3DB23EDD03200ACA58D /* StringExtension.swift */,
 				596EA3D923EDCE5600ACA58D /* UIViewExtension.swift */,
@@ -319,6 +322,7 @@
 				596EA34E23EC998200ACA58D /* AppDelegate.swift in Sources */,
 				596EA35023EC998200ACA58D /* SceneDelegate.swift in Sources */,
 				596EA3A123EC9ACF00ACA58D /* ControllerIdentifier.swift in Sources */,
+				596EA3E323EE66A900ACA58D /* UITextFieldExtension.swift in Sources */,
 				596EA39B23EC9ACF00ACA58D /* Functions.swift in Sources */,
 				596EA39D23EC9ACF00ACA58D /* Constant.swift in Sources */,
 				596EA3DE23EDD7F200ACA58D /* UserData.swift in Sources */,

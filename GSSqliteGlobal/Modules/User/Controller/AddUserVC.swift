@@ -11,7 +11,7 @@ import UIKit
 class AddUserVC: UIViewController {
     //MARK:- IBOutlets
     @IBOutlet weak var textFieldFirstName : UITextField!
-    @IBOutlet weak var textFeildLastName : UITextField!
+    @IBOutlet weak var textFieldLastName : UITextField!
     @IBOutlet weak var textFieldEmail : UITextField!
     
     //MARK:- Variables
@@ -31,8 +31,9 @@ class AddUserVC: UIViewController {
     
     func resetForm() {
         self.textFieldFirstName.text = ""
-        self.textFeildLastName.text = ""
+        self.textFieldLastName.text = ""
         self.textFieldEmail.text = ""
+        self.view.endEditing(true)
     }
     
     //MARK:- IBActions
@@ -56,7 +57,7 @@ class AddUserVC: UIViewController {
     //MARK:- Database Methods
     func insertIntoTable() {
         var resultInsert = false
-        resultInsert = dbFacilities.ExecuteQuery("INSERT INTO user (firstname, lastname, email) VALUES (\"\(self.textFieldFirstName.text ?? "")\", \"\(self.textFeildLastName.text ?? "")\", \"\(self.textFieldEmail.text ?? "")\")")
+        resultInsert = dbFacilities.ExecuteQuery("INSERT INTO user (firstname, lastname, email) VALUES (\"\(self.textFieldFirstName.text ?? "")\", \"\(self.textFieldLastName.text ?? "")\", \"\(self.textFieldEmail.text ?? "")\")")
         print(resultInsert)
         if resultInsert == true {
             
@@ -71,7 +72,7 @@ class AddUserVC: UIViewController {
     func updateIntoTable() {
         
         var resultUpdate = false
-        resultUpdate = dbFacilities.ExecuteQuery("UPDATE user SET firstname = \"\(self.textFieldFirstName.text ?? "")\", lastname = \"\(self.textFeildLastName.text ?? "")\" where email = \"\(self.textFieldEmail.text ?? "")\"")
+        resultUpdate = dbFacilities.ExecuteQuery("UPDATE user SET firstname = \"\(self.textFieldFirstName.text ?? "")\", lastname = \"\(self.textFieldLastName.text ?? "")\" where email = \"\(self.textFieldEmail.text ?? "")\"")
         if resultUpdate {
             resetForm()
             UIApplication.shared.windows.last?.showToast(toastMessage: StringConstant.CustomMsg.dataUpdated, duration: 0.4)
@@ -81,12 +82,21 @@ class AddUserVC: UIViewController {
     }
 }
 
+//MARK:- TextField Delegate
+extension AddUserVC : UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.changeResponder(textFields: [textFieldFirstName, textFieldLastName, textFieldEmail])
+        return true
+    }
+}
+
+//MARK:- Validations
 extension AddUserVC {
     func isValidate() -> Bool {
         if self.textFieldFirstName.text?.isBlank() ?? true {
             UIApplication.shared.windows.last?.showToast(toastMessage: StringConstant.Validations.enterFirstName, duration: 0.4)
             return false
-        } else if self.textFeildLastName.text?.isBlank() ?? true {
+        } else if self.textFieldLastName.text?.isBlank() ?? true {
             UIApplication.shared.windows.last?.showToast(toastMessage: StringConstant.Validations.enterLastName, duration: 0.4)
             return false
         } else if self.textFieldEmail.text?.isBlank() ?? true {

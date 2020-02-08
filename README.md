@@ -4,6 +4,10 @@ Many times we need a local database for our application. And if we talk about iO
 
 **GSSqliteGlobal is a lightweight Swift wrapper for SQLite.**
 
+![alt text](https://github.com/igatitech/GSSqliteGlobal/blob/master/Resources/AddUser.png)           ![alt text](https://github.com/igatitech/GSSqliteGlobal/blob/master/Resources/UserList.png)
+
+![](GSSqliteGlobal.gif)
+
 ### Usage
 
 - Clone or Download this project
@@ -20,7 +24,7 @@ Many times we need a local database for our application. And if we talk about iO
 
 ![alt text](https://github.com/igatitech/GSSqliteGlobal/blob/master/Resources/LinkBinary.png)
 
-- Add **Local Database** folder into your project
+- Add **Local Database** folder from this project to your project
 - This folder contains Constant header file, Bridging Header file, sqlite file, Database Facility Manager Class
 - Rename all the files as per your requirement.
 - As you have added Bridging Header file, you need to add it's path in Build Settings(If Bridging Header file is already setup in your project then ignore futhre steps)
@@ -33,7 +37,7 @@ Many times we need a local database for our application. And if we talk about iO
     
     ![alt text](https://github.com/igatitech/GSSqliteGlobal/blob/master/Resources/BridgingHeaderPath.png)
     
-    - **@note:** It is important to begin your directory path with "$(SRCROOT), so in future if you move your project to some other machine or directory, it will automatically update the path"
+    - **@note:** It is important to begin your directory path with "$(SRCROOT)", so in future if you move your project to some other machine or directory, it will automatically update the path"
 
 ### AppDelegate.swift
 
