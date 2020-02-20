@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  GSSqliteGlobal
 //
-//  Created by iGatiTech on 07/02/20.
+//  Created by Gati on 07/02/20.
 //  Copyright © 2020 iGatiTech. All rights reserved.
 //
 

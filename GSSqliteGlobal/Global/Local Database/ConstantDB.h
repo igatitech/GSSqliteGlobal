@@ -2,7 +2,7 @@
 //  ConstantDB.h
 //  GSSqliteGlobal
 //
-//  Created by iGatiTech on 02/07/18.
+//  Created by Gati on 02/07/18.
 //  Copyright © 2020 iGatiTech. All rights reserved.
 //
 

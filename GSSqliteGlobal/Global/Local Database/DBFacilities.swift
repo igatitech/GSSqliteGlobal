@@ -2,7 +2,7 @@
 //  DBFacilities.swift
 //  GSSqliteGlobal
 //
-//  Created by iGatiTech on 27/06/18.
+//  Created by Gati on 27/06/18.
 //  Copyright © 2020 iGatiTech. All rights reserved.
 //
 
