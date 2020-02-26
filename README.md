@@ -1,3 +1,6 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+![Swift: 5.0.x](https://img.shields.io/badge/Swift-5.0.x-orange)
+
 # GSSqliteGlobal
 
 Many times we need a local database for our application. And if we talk about iOS Application Development then we have an inbuilt database called SQLite. SQLite is an embedded database management system.
